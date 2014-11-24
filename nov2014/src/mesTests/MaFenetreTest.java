@@ -23,7 +23,7 @@ public class MaFenetreTest extends JFrame {
 			public void run() {
 				try {
 					MaFenetreTest frame = new MaFenetreTest();
-					frame.setVisible(true);
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,6 +55,7 @@ public class MaFenetreTest extends JFrame {
 		gbc_lblNewLabel.gridx = 6;
 		gbc_lblNewLabel.gridy = 4;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
+		this.setVisible(true);
 	}
 
 }
