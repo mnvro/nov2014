@@ -38,6 +38,10 @@ public class Parametres {
 	public final static int MOMENT_JEU_JOUER = 2;
 	public final static int MOMENT_JEU_FINI = 3;
 	
+	public final static int NBLIGNES = 10;
+	public final static int NBCOLONNES = 10;
+	
+	
 	public final static Piece tableauInitialAvecToutesLesPiecesDunJoueur[] = new Piece [40];
 	
 

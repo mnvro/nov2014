@@ -20,6 +20,7 @@ public class Triche {
 	/**
 	 * Cette classe permet de tester plus rapidement
 	 * Elle permet de placer toutes les pièces sur le plateau de jeu d'un coup
+	 * @param option 0, 1 ou 2 pour 3 versions différentes proposées - 0 on place les pièces comme dans la boîte de rangement, 1 c'est un peu mieux, 2 c'est le mieux pour tester
 	 */
 	public static void placeTout(Stratego jeu, int option) {
 		for (int l=0;l<jeu.getBoiteRangement().getNbLignes();l++){
@@ -33,12 +34,12 @@ public class Triche {
 		
 		
 		switch (option){
-		case 1 : {
+		case 0 : {
 			int tabPieces[][] = {
-					{30,31,32,33,34,35,36,37,38,39},
+					{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+					{10,11,12,13,14,15,16,17,18,19},
 					{20,21,22,23,24,25,26,27,28,29},
-					{19,18,17,16,15,14,13,12,11,10},
-					{9 ,8 ,7 ,6 ,5 ,4 ,3 ,2 ,1 ,0 }
+					{30,31,32,33,34,35,36,37,38,39}
 			};
 			/*jeu.getPlateauDeJeu().matrice[6][0].setPiece(Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[0]); // drapeau  	// 1 -
 			jeu.getPlateauDeJeu().matrice[6][1].setPiece(Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[1]); // bombe  		// 6
@@ -87,7 +88,25 @@ public class Triche {
 			for (int l = 0;l<4;l++){
 				for (int c = 0;c<10;c++){
 					jeu.getPlateauDeJeu().matrice[6+l][c].setPiece(Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
-					System.out.println("Je place en ["+l+"]["+c+"] : "+Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
+					//System.out.println("Je place en ["+l+"]["+c+"] : "+Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
+				}
+			}
+			
+			break;
+			
+		}
+		case 1 : {
+			int tabPieces[][] = {
+					{30,31,32,33,34,35,36,37,38,39},
+					{20,21,22,23,24,25,26,27,28,29},
+					{19,18,17,16,15,14,13,12,11,10},
+					{9 ,8 ,7 ,6 ,5 ,4 ,3 ,2 ,1 ,0 }
+			};
+			
+			for (int l = 0;l<4;l++){
+				for (int c = 0;c<10;c++){
+					jeu.getPlateauDeJeu().matrice[6+l][c].setPiece(Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
+					//System.out.println("Je place en ["+l+"]["+c+"] : "+Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
 				}
 			}
 			
@@ -95,7 +114,7 @@ public class Triche {
 		}
 		case 2 : {
 			int tabPieces[][] = {
-					{8 ,30,34,36,9 ,37,38,32,10,1 },
+					{8 ,30,34,36,9 ,37,38,32,10,1 }, // éclaireur, capitaine, commandant, colonel, éclaireur, colonel, général, capitaine, éclaireur, bombe
 					{18,25,14,31,35,27,15,26,2 ,23},
 					{11,29,33,12,39,19,13,3 ,22,6 },
 					{28,16,24,20,7 ,17,4 ,21,5 ,0 }
@@ -103,7 +122,7 @@ public class Triche {
 			for (int l = 0;l<4;l++){
 				for (int c = 0;c<10;c++){
 					jeu.getPlateauDeJeu().matrice[6+l][c].setPiece(Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
-					System.out.println("Je place en ["+l+"]["+c+"] : "+Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
+					//System.out.println("Je place en ["+l+"]["+c+"] : "+Parametres.tableauInitialAvecToutesLesPiecesDunJoueur[tabPieces[l][c]]);
 				}
 			}
 			

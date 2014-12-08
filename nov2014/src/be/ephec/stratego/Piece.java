@@ -5,7 +5,6 @@ public class Piece {
 	private int couleur;
 	//private String nom;
 
-
 	public Piece() {
 		// TODO Auto-generated constructor stub
 	}
@@ -15,6 +14,10 @@ public class Piece {
 		this.val = val;
 	}
 
+	/*public boolean estDeplacable(){
+		case 
+	}*/
+	
 	public int getVal() {
 		return val;
 	}
@@ -45,7 +48,7 @@ public class Piece {
 	public static String affcheResultCombat(int valCombat){
 		switch (valCombat){
 		case 0 :  
-			return "Personne ne gange";
+			return "Personne ne gagne";
 		case 1 : 
 			return "Vous gagnez le combat";
 		case 2 : 

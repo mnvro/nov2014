@@ -42,10 +42,10 @@ Lors d'une attaque ou non, l'éclaireur peut se déplacer d'autant de cases libr
 public class Stratego {
 
 	private boolean gagne = false;
-	
-	private Damier plateauDeJeu = new Plateau(10,10);
+
+	private Damier plateauDeJeu = new Plateau(Parametres.NBLIGNES,Parametres.NBCOLONNES);
 	private Damier boiteRangement = new BoiteRangement(4,10);
-	
+
 	private int etatDuJeu = Parametres.MOMENT_JEU_PLACER_PIECES;
 
 	public boolean isGagne() {
@@ -56,7 +56,7 @@ public class Stratego {
 	}
 
 
-	
+
 
 
 
@@ -80,44 +80,47 @@ public class Stratego {
 	}
 	public static void main(String arg[]){
 		Stratego jeu = new Stratego();
-		int nbPieceAPlacer = 40;
+		//int nbPieceAPlacer = 40;
 		int ligneOrigine;
 		int colonneOrigine;
 		int lineDestination;
 		int colonneDestiantion;
-		
+
 		while(jeu.etatDuJeu == Parametres.MOMENT_JEU_PLACER_PIECES){
 			System.out.println("Voici le plateau de jeu");
 			System.out.println(jeu.plateauDeJeu.toString(10));
 			System.out.println("Voici la boîte de rangement");
-			
+
 			System.out.println(jeu.boiteRangement.toString(10));
 			Parametres.afficheLegende();
 			System.out.println("Vous devez choisir une pièce dans la boîte. On vous demande la ligne puis la colonne de cette pièce");
-			System.out.println("Quelle est la ligne où se trouve cette pièce ?");
-			ligneOrigine = Clavier.lireString().charAt(0)-65;System.out.println("ligne origine = "+ligneOrigine);
+			System.out.println("Quelle est la ligne où se trouve cette pièce ? (Z pour tester plus vite)");
+			ligneOrigine = (Clavier.lireString()).toUpperCase().charAt(0)-65;System.out.println("ligne origine = "+ligneOrigine);
 			if (ligneOrigine == 25) {
-				Triche.placeTout(jeu,1);
-				break;
+				Triche.placeTout(jeu,2);
+				jeu.setEtatDuJeu(Parametres.MOMENT_JEU_ATTENDRE_ADVERSAIRE);
+			} else{
+				System.out.println("Quelle est la colonne où se trouve cette pièce ?");
+				colonneOrigine = Clavier.lireInt();
+
+				System.out.println("Vous devez choisir une case sur le plateau. On vous demande la ligne puis la colonne de cette case");
+				System.out.println("Quelle est la ligne où se trouve cette case ?");
+				lineDestination = Clavier.lireString().toUpperCase().charAt(0)-65;
+				System.out.println("Quelle est la colonne où se trouve cette case ?");
+				colonneDestiantion = Clavier.lireInt();
+
+				Deplacement.bouge(jeu,ligneOrigine,colonneOrigine,lineDestination,colonneDestiantion);
 			}
-			System.out.println("Quelle est la colonne où se trouve cette pièce ?");
-			colonneOrigine = Clavier.lireInt();
-			
-			System.out.println("Vous devez choisir une case sur le plateau. On vous demande la ligne puis la colonne de cette case");
-			System.out.println("Quelle est la ligne où se trouve cette case ?");
-			lineDestination = Clavier.lireString().charAt(0)-65;
-			System.out.println("Quelle est la colonne où se trouve cette case ?");
-			colonneDestiantion = Clavier.lireInt();
-			
-			Deplacement.bouge(jeu,ligneOrigine,colonneOrigine,lineDestination,colonneDestiantion);
 		}
 		jeu.setEtatDuJeu(Parametres.MOMENT_JEU_ATTENDRE_ADVERSAIRE);
+		
 		System.out.println("Voici le plateau de jeu");
 		System.out.println(jeu.plateauDeJeu.toString(20));
 		System.out.println("Voici la boîte de rangement");
-		
+
 		System.out.println(jeu.boiteRangement.toString(20));
-		
+
+
 	}
 
 }

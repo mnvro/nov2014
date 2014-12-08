@@ -11,9 +11,7 @@ public class Damier {
 	private int nbLignes;
 	private int nbColonnes;
 
-	protected Case matrice[][] ;// on commence en haute à gauche
-	
-	//private Piece ensemblePieces[] = Parametres.tableauInitialAvecToutesLesPiecesDunJoueur.clone(); // todo ça ne doit pas être ici
+	protected Case matrice[][] ;// on commence en haute à gauche,c'est d'abord la ligne puis la colonne
 
 	public int getNbLignes() {
 		return nbLignes;
@@ -44,7 +42,6 @@ public class Damier {
 	/**
 	 * @param nbLinges
 	 * @param nbColonnes
-	 * @param type 0 plateau de jeu - 1 boîte avec les pièces perdues ou par encore rangées
 	 */
 	public Damier(int nbLinges, int nbColonnes) {
 		this.nbLignes = nbLinges;
@@ -53,13 +50,19 @@ public class Damier {
 		int l,c;
 		for (l=0;l<nbLinges;l++){
 			for (c=0;c<nbColonnes;c++){
-				matrice[l][c] = new Case(false,null, true);
+				matrice[l][c] = new Case(false,null, true,l,c);
 			}
 		}
 		
 
 	}
 
+	/**
+	 * @param decalage le nombre d'espaces que l'on veut ajouter avant l'affichage de chaque ligne
+	 * @return si on a 10 colonnes cette fonction retourne
+	 * 				"    0   1   2   3   4   5   6   7   8   9\n"+
+				    "  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐\n";
+	 */
 	public String toStringDeuxPremieresLignes(int decalage){
 		String sDecal="";
 		for (int i=0;i<decalage;i++){
@@ -76,10 +79,15 @@ public class Damier {
 		}
 		s.append("───┐\n");
 		return s.toString();
-		/*return 	"    0   1   2   3   4   5   6   7   8   9\n"+sDecal+
-				    "  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐\n";*/
 	}
 
+	/**
+	 * @param numLigne le numéro de la ligne
+	 * @return
+	 * si on a 10 colonnes, retourne " "+La lettre correspondant à la ligne+"│   │   │   │   │   │   │   │   │   │   │\n"
+	   si c'est une ligne avec lac  retourne                                " E│   │   │▓▓▓│▓▓▓│   │   │▓▓▓│▓▓▓│   │   │\n"
+	   On verra également les pièces placées sur cette ligne
+	 */
 	public String toStringLigneNormale(int numLigne){
 		String s = " "+(char)(65+numLigne);
 		StringBuffer sb = new StringBuffer(s);
@@ -90,12 +98,11 @@ public class Damier {
 		sb.append("\n");
 		s = sb.toString();
 		return s;
-
-		//return " "+(char)(65+numLigne)+"│   │   │   │   │   │   │   │   │   │   │\n";
-
-		// si c'est une ligne avec lac : " E│   │   │▓▓▓│▓▓▓│   │   │▓▓▓│▓▓▓│   │   │\n"+
 	}
 
+	/**
+	 * @return "  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n" si on a 10 colonnes
+	 */
 	public String toStringSeparationNormale(){
 		StringBuffer sb = new StringBuffer("  ├");
 		for (int i=0;i<nbColonnes-1;i++){
@@ -104,9 +111,11 @@ public class Damier {
 		}
 		sb.append("───┤\n");
 		return sb.toString();
-		//return "  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"; // todo améliorer pour que ça s'adapte au nombre de colonnes
 	}
 
+	/**
+	 * @return "  └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘\n\n" si on a 10 colonnes
+	 */
 	public String toStringLaDerniereLigne(){
 		StringBuffer sb = new StringBuffer("  └");
 		for (int i=0;i<nbColonnes-1;i++){
@@ -115,9 +124,35 @@ public class Damier {
 		}
 		sb.append("───┘\n\n");
 		return sb.toString();
-		//return "  └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘\n\n";
 	}
 
+	/**
+	 * @param decalage le nombre d'espaces ajoutés au début de chaque ligne
+	 * @return  "    0   1   2   3   4   5   6   7   8   9\n"+
+				"  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐\n"+
+				" A│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" B│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" C│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" D│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" E│   │   │▓▓▓│▓▓▓│   │   │▓▓▓│▓▓▓│   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" F│   │   │▓▓▓│▓▓▓│   │   │▓▓▓│▓▓▓│   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" G│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" H│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" I│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤\n"+
+				" J│   │   │   │   │   │   │   │   │   │   │\n"+
+				"  └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘\n\n"
+		si on a 10 lignes et 10 colonnes
+		on verra également les pièces placées sur ce damier
+	 */
 	public String toString(int decalage){
 		String sDecal="";
 		for (int i=0;i<decalage;i++){
