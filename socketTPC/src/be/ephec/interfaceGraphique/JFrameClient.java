@@ -47,11 +47,13 @@ public class JFrameClient extends JFrame {
 	 */
 	public JFrameClient(ApplicationClient applicationClient) {
 		this.applicationClient = applicationClient;
-		nbClient++;
+		this.setTitle("Client numéro "+nbClient);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0+getNbClient()*50, 400+nbClient*50, 708, 446);
+		setBounds(300+ nbClient/3*300,nbClient%3*300 , 300, 300); // colonne puis ligne
 		contentPane = new JPanelAccueilClient(applicationClient);
 		setContentPane(contentPane);
+		nbClient++;
 	}
 
 }

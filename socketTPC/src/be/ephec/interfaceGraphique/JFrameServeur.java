@@ -49,7 +49,7 @@ public class JFrameServeur extends JFrame {
 		this.applicationServeur = applicationServeur;
 		listeNumClient.add(-1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 562, 359);
+		setBounds(0, 0, 300, 300);
 		this.setVisible(true);
 		this.setTitle("Serveur");
 		contentPane = new JPanelAccueilServeur(applicationServeur);	
