@@ -2,6 +2,7 @@ package be.ephec.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -9,47 +10,101 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Serveur extends ServerSocket implements Runnable {
-	class SocketCoteServeur extends Socket implements Runnable{
-		public SocketCoteServeur() {
-			// TODO Auto-generated constructor stub
+	private int numPort;
+	private int nbClients;
+	ArrayList<SocketCoteServeur> listeClients = new ArrayList<SocketCoteServeur>();
+	private ApplicationServeur as;
+
+
+
+	class SocketCoteServeur implements Runnable{
+		private Socket socket;
+		private ObjectOutputStream oos;
+		private ObjectInputStream ois;
+		private int id;
+		private Object objetRecu;
+
+		public SocketCoteServeur(Socket socket, int id) {
+			this.socket = socket;
+			this.id = id;
+			System.out.println("socket = "+socket);
+			try {
+				oos = new ObjectOutputStream(this.socket.getOutputStream()); // deux lignes de code à croiser entre client et serveur
+				ois = new ObjectInputStream(this.socket.getInputStream());   // car elles sont bloquantes.
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Thread t =new Thread(this);
+			t.start();
 		}
 
 		@Override
 		public void run() {
 			try {
-				ObjectInputStream ois = new ObjectInputStream(this.getInputStream());
 
-				while (this.isConnected()){
-					
+
+				while (this.socket.isConnected()){
+					objetRecu = ois.readObject();
+					as.getJfs().getPannelPourRecevoirClient().
+					getTextPaneObjetRecu().setText(
+							as.getJfs().getPannelPourRecevoirClient().getTextPaneObjetRecu().getText()+"\n"+objetRecu
+					);
+					as.getJfs().getPannelPourRecevoirClient().
+					getTextPaneObjetRecu().setCaretPosition(as.getJfs().getPannelPourRecevoirClient().getTextPaneObjetRecu().getText().length());
+					Thread.sleep(10);
 
 				}
-			} catch (IOException e) {
+			} catch (IOException | ClassNotFoundException | InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				System.out.println("Le client "+(id+1)+" s'est déconnecté");
 			}
 
 		}
+		public void ecrire(Object o){
+
+			try {
+
+				oos.writeObject(o);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				System.out.println("On a perdu la connexion");
+			}
+
+		}
+		public boolean estConnecte(){
+			return (this.socket.isConnected() && socket.isBound() && ! socket.isClosed() &&
+					oos !=null); // je sais pas lequel est le bon, je prends tout
+		}
 
 	}
-	private int numPort;
-	private int nbClients;
-	ArrayList<Socket> listeClients = new ArrayList<Socket>();
 
-	public Serveur(int numPort) throws IOException {
+
+	public Serveur(int numPort, ApplicationServeur as) throws IOException {
 		super(numPort);
+		this.as = as;
 		this.numPort = numPort;
 		Thread thread = new Thread(this);
 		thread.start();
 	}
 
+
+
 	@Override
 	public void run() {
-		while (true){ // à remplacer par tant que le jeu fonctionne, tant qu'on n'arrête pas le serveur...
+		while (this.isBound()){ // à remplacer par tant que le jeu fonctionne, tant qu'on n'arrête pas le serveur...
 			try {
-				listeClients.add(this.accept());
+				SocketCoteServeur scs = new SocketCoteServeur(this.accept(),nbClients);
+				listeClients.add(scs);
+
+
 				nbClients++;
-				Thread.sleep(100);
+				Thread.sleep(10);
 				System.out.println("On a "+nbClients+" clients");
+				//scs.oos = new ObjectOutputStream(scs.socket.getOutputStream());
+
 			} catch (IOException | InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,7 +115,7 @@ public class Serveur extends ServerSocket implements Runnable {
 
 	public static void main(String args[]){
 		try {
-			Serveur monServeur = new Serveur(8981);
+			Serveur monServeur = new Serveur(Param.NUMPORT,null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

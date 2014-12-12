@@ -3,13 +3,16 @@ package mesTests;
 
 
 import javax.swing.JFrame;
+import java.awt.Toolkit;
 
 public class MaFenetre extends JFrame {
 	public MaFenetre (){
-		this.setVisible(true);
-		this.setBounds(100, 200, 400, 600);
-		//this.setSize(400, 600);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/StrategoIcon.jpg")); // permet de mettre une image dans la barre de titre
 		
+		//getContentPane().set
+		this.setBounds(100, 200, 256, 256);
+		//this.setSize(400, 600);
+		this.setVisible(true);
 	}
 	
 
