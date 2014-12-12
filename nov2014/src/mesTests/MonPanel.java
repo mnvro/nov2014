@@ -1,3 +1,4 @@
+package mesTests;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,7 +12,7 @@ import javax.swing.WindowConstants;
 
 /**
  * 
- * @author Peri
+ * @author Nicolas Perivolaris (3TI 2014-2014)
  *
  */
 public class MonPanel extends JPanel {
