@@ -4,7 +4,10 @@ public class TestTout {
 
 	public static void main(String[] args) {
 		ApplicationServeur as = new ApplicationServeur();
-		ApplicationClient ac = new ApplicationClient();
+		ApplicationClient ac[] = new ApplicationClient[5];
+		for (int i=0;i<ac.length;i++){
+			ac[i]= new ApplicationClient();
+		}
 
 	}
 

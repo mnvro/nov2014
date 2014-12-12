@@ -15,6 +15,7 @@ public class MonClientTCP extends Socket implements Runnable {
 	private Object objetRecu;
 	private ApplicationClient applicationClient;
 	
+
 	public void ecrireMessage(Object o){
 		try {
 			oos.writeObject(o);
@@ -31,6 +32,7 @@ public class MonClientTCP extends Socket implements Runnable {
 			oos = new ObjectOutputStream(this.getOutputStream());	// il faut croiser par rapport au serveur
 			ois = new ObjectInputStream(this.getInputStream());
 			(new Thread(this)).start();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

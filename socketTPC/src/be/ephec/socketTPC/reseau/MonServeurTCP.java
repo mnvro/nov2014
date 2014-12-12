@@ -5,8 +5,10 @@ import java.awt.Insets;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -137,6 +139,23 @@ public class MonServeurTCP extends ServerSocket implements Runnable {
 		else{
 			listeClients.get(numClient).ecrire(o);
 		}
+	}
+	
+	public static InetAddress[] trouveToutesLesIpsDuServeur(){
+		InetAddress ia[]= null;
+		try {
+			ia = InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
+			/*for (InetAddress inetAddress : ia) {
+				System.out.println(inetAddress.getHostAddress());
+				}
+			 */
+
+
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ia;
 	}
 
 	@Override

@@ -37,10 +37,10 @@ public class JPanelClient extends JPanel {
 	public JPanelClient(ApplicationClient applicationClient) {
 		this.applicationClient = applicationClient;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		txtMessageEnvoyer = new JTextField();
@@ -48,8 +48,8 @@ public class JPanelClient extends JPanel {
 		GridBagConstraints gbc_txtMessageEnvoyer = new GridBagConstraints();
 		gbc_txtMessageEnvoyer.insets = new Insets(0, 0, 5, 5);
 		gbc_txtMessageEnvoyer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtMessageEnvoyer.gridx = 5;
-		gbc_txtMessageEnvoyer.gridy = 2;
+		gbc_txtMessageEnvoyer.gridx = 0;
+		gbc_txtMessageEnvoyer.gridy = 0;
 		add(txtMessageEnvoyer, gbc_txtMessageEnvoyer);
 		txtMessageEnvoyer.setColumns(10);
 		
@@ -61,8 +61,8 @@ public class JPanelClient extends JPanel {
 		});
 		GridBagConstraints gbc_btnEnvoyerMessageAu = new GridBagConstraints();
 		gbc_btnEnvoyerMessageAu.insets = new Insets(0, 0, 5, 0);
-		gbc_btnEnvoyerMessageAu.gridx = 6;
-		gbc_btnEnvoyerMessageAu.gridy = 2;
+		gbc_btnEnvoyerMessageAu.gridx = 1;
+		gbc_btnEnvoyerMessageAu.gridy = 0;
 		add(btnEnvoyerMessageAu, gbc_btnEnvoyerMessageAu);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -71,8 +71,8 @@ public class JPanelClient extends JPanel {
 		
 		
 		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
-		gbc_scrollPane.gridx = 5;
-		gbc_scrollPane.gridy = 4;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		applicationClient.getjFrameClient().setjTextAreaObjetsRecus(new JTextArea());
 		scrollPane.setViewportView(applicationClient.getjFrameClient().getjTextAreaObjetsRecus());

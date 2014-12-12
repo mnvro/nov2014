@@ -36,10 +36,10 @@ public class JPanelServeur extends JPanel {
 	public JPanelServeur(ApplicationServeur applicationServeur) {
 		this.applicationServeur = applicationServeur;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.columnWidths = new int[]{199, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0};
 		setLayout(gridBagLayout);
 		
 		txtMessageEnvoyer = new JTextField();
@@ -47,7 +47,7 @@ public class JPanelServeur extends JPanel {
 		GridBagConstraints gbc_txtMessageEnvoyer = new GridBagConstraints();
 		gbc_txtMessageEnvoyer.insets = new Insets(0, 0, 5, 5);
 		gbc_txtMessageEnvoyer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtMessageEnvoyer.gridx = 2;
+		gbc_txtMessageEnvoyer.gridx = 0;
 		gbc_txtMessageEnvoyer.gridy = 1;
 		add(txtMessageEnvoyer, gbc_txtMessageEnvoyer);
 		txtMessageEnvoyer.setColumns(10);
@@ -58,7 +58,7 @@ public class JPanelServeur extends JPanel {
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 3;
+		gbc_comboBox.gridx = 1;
 		gbc_comboBox.gridy = 1;
 		add(applicationServeur.getjFrameServeur().getComboBox(), gbc_comboBox);
 		
@@ -73,8 +73,8 @@ public class JPanelServeur extends JPanel {
 			}
 		});
 		GridBagConstraints gbc_JButtonEnvoyer = new GridBagConstraints();
-		gbc_JButtonEnvoyer.insets = new Insets(0, 0, 5, 5);
-		gbc_JButtonEnvoyer.gridx = 4;
+		gbc_JButtonEnvoyer.insets = new Insets(0, 0, 5, 0);
+		gbc_JButtonEnvoyer.gridx = 2;
 		gbc_JButtonEnvoyer.gridy = 1;
 		add(JButtonEnvoyer, gbc_JButtonEnvoyer);
 		
@@ -82,7 +82,7 @@ public class JPanelServeur extends JPanel {
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;	
 		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
-		gbc_scrollPane.gridx = 2;
+		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 2;
 		add(scrollPane, gbc_scrollPane);
 		applicationServeur.getjFrameServeur().setTxtrMessagesReus(new JTextArea());
