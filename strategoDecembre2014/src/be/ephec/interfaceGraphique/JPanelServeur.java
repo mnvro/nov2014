@@ -21,6 +21,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+/**
+ * @author mnv
+ *
+ */
 public class JPanelServeur extends JPanel {
 	private JTextField txtMessageEnvoyer;
 	

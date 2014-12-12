@@ -20,6 +20,10 @@ import be.ephec.ApplicationClient;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * @author mnv
+ *
+ */
 public class JPanelClient extends JPanel {
 	private JTextField txtMessageEnvoyer;
 	private ApplicationClient applicationClient;

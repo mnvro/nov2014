@@ -19,6 +19,7 @@ les éclaireurs (2), 8 en jeu
 l'espion (1), 1 en jeu
 À ces pièces mobiles s'ajoutent les six bombes et le drapeau, indéplaçables.
  */
+
 public class Parametres {
 	public final static  int DRAPEAU  = 0; 		// 1 il en existe 1 seul
 	public final static  int BOMBE  = 1; 		// 6
@@ -77,6 +78,9 @@ public class Parametres {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * 
+	 */
 	public static  void afficheLegende(){
 		for (int i=0;i<nbTypePieces;i++){
 			System.out.println(tabTypePiece[i].getVal()+" = "+nomPiece[i]);

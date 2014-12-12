@@ -1,5 +1,9 @@
 package be.ephec.stratego;
 
+/**
+ * @author mnv
+ *
+ */
 public class Plateau extends Damier {
 
 	public Plateau(int nbLignes, int nbColonnes) {

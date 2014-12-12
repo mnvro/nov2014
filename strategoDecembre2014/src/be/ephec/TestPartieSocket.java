@@ -1,5 +1,11 @@
 package be.ephec;
 
+/**
+ * @author mnv
+ * Permet de tester tout rapidement
+ * Va créer un serveur et plusieurs clients
+ *
+ */
 public class TestPartieSocket {
 
 	public static void main(String[] args) {

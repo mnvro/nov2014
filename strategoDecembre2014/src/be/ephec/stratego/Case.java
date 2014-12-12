@@ -15,6 +15,9 @@ public class Case {
 	
 	
 
+	/**
+	 * @return
+	 */
 	public int getLigne() {
 		return ligne;
 	}

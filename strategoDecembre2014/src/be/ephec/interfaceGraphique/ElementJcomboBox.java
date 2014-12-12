@@ -1,5 +1,9 @@
 package be.ephec.interfaceGraphique;
 
+/**
+ * @author mnv
+ *
+ */
 public class ElementJcomboBox{
 	private String message;
 	private int numDansLeCombo;

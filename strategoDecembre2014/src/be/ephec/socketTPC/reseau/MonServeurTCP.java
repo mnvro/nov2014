@@ -17,6 +17,10 @@ import be.ephec.ApplicationServeur;
 import be.ephec.Param;
 import be.ephec.interfaceGraphique.ElementJcomboBox;
 
+/**
+ * @author mnv
+ *
+ */
 public class MonServeurTCP extends ServerSocket implements Runnable {
 
 	class SocketCoteServeur implements Runnable {

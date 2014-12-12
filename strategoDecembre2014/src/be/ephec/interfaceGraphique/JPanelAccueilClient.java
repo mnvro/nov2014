@@ -22,6 +22,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
+/**
+ * @author mnv
+ *
+ */
 public class JPanelAccueilClient extends JPanel {
 	private ApplicationClient applicationClient;
 	private JTextField jTxtIpDuServeur;

@@ -1,5 +1,9 @@
 package be.ephec.stratego;
 
+/**
+ * @author mnv
+ *
+ */
 public class BoiteRangement extends Damier {
 
 	public BoiteRangement(int nbLignes, int nbColonnes) {

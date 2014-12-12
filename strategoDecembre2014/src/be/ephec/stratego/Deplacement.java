@@ -31,6 +31,12 @@ public class Deplacement {
 		}
 	}
 	
+	/**
+	 * @param jeu
+	 * @param ligneSource
+	 * @param colonneSource
+	 * @return
+	 */
 	public static boolean aDesDestinationsPossibles(StrategoVersionDOS jeu, int ligneSource, int colonneSource){
 		ArrayList<Case> listeCases = trouveToutesLesDestinationsPossibles(jeu,ligneSource,colonneSource);
 		return (listeCases.size() != 0);

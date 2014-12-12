@@ -47,6 +47,7 @@ Toute pièce attaquant une bombe est éliminée, sauf le démineur qui élimine 
 Lors d'une attaque ou non, l'éclaireur peut se déplacer d'autant de cases libres qu'il le souhaite, en ligne droite.
  *
  */
+
 public class StrategoVersionDOS {
 
 	private boolean gagne = false;

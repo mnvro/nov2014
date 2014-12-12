@@ -1,8 +1,13 @@
 package be.ephec;
 
 import be.ephec.interfaceGraphique.JFrameClient;
+
 import be.ephec.socketTPC.reseau.MonClientTCP;
 
+/**
+ * @author mnv
+ *
+ */
 public class ApplicationClient {
 	private MonClientTCP client;
 	private JFrameClient jFrameClient;

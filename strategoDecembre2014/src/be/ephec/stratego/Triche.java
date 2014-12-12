@@ -2,6 +2,12 @@ package be.ephec.stratego;
 
 import be.ephec.application.StrategoVersionDOS;
 
+/**
+ * @author mnv
+ * Cette classe permet de tester plus rapidement
+ * Elle permet de placer toutes les pièces sur le plateau de jeu d'un coup
+ *
+ */
 public class Triche {
 	/*
 	 * public final static  int DRAPEAU  = 0; 		// 1
@@ -20,8 +26,7 @@ public class Triche {
 	 */
 
 	/**
-	 * Cette classe permet de tester plus rapidement
-	 * Elle permet de placer toutes les pièces sur le plateau de jeu d'un coup
+	 * 
 	 * @param option 0, 1 ou 2 pour 3 versions différentes proposées - 0 on place les pièces comme dans la boîte de rangement, 1 c'est un peu mieux, 2 c'est le mieux pour tester
 	 */
 	public static void placeTout(StrategoVersionDOS jeu, int option) {

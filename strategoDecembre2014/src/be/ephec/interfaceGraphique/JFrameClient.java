@@ -12,6 +12,10 @@ import be.ephec.ApplicationClient;
 import be.ephec.Param;
 import be.ephec.socketTPC.reseau.MonClientTCP;
 
+/**
+ * @author mnv
+ *
+ */
 public class JFrameClient extends JFrame {
     private static int nbJFrame = 0;
 	private JPanel contentPane;

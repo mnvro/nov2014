@@ -9,6 +9,10 @@ import java.net.UnknownHostException;
 import be.ephec.ApplicationClient;
 import be.ephec.Param;
 
+/**
+ * @author mnv
+ *
+ */
 public class MonClientTCP extends Socket implements Runnable {
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;

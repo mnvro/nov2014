@@ -25,6 +25,10 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.InetAddress;
 
+/**
+ * @author mnv
+ *
+ */
 public class JPanelAccueilServeur extends JPanel {
 	private ApplicationServeur applicationServeur;
 	private JTextField textField;

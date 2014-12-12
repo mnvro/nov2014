@@ -1,5 +1,9 @@
 package be.ephec.stratego;
 
+/**
+ * @author mnv
+ *
+ */
 public class Piece {
 	private int val;
 	private int couleur;

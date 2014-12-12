@@ -1,5 +1,9 @@
 package be.ephec.stratego;
 
+/**
+ * @author mnv
+ *
+ */
 public class Joueur {
 	private int num; // 0 ou 1
 	private String couleur;

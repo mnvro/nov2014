@@ -13,6 +13,10 @@ import javax.swing.border.EmptyBorder;
 import be.ephec.ApplicationServeur;
 import be.ephec.Param;
 
+/**
+ * @author mnv
+ *
+ */
 public class JFrameServeur extends JFrame {
 
 	private JPanel contentPane;
