@@ -79,9 +79,11 @@ public class JPanelClient extends JPanel {
 		scrollPane.setViewportView(applicationClient.getjFrameClient().getjTextAreaObjetsRecus());
 		
 		
-		applicationClient.getjFrameClient().getjTextAreaObjetsRecus().setText("Voici les les messages re\u00E7us par le client");
+		applicationClient.getjFrameClient().getjTextAreaObjetsRecus().setText("Voici les les messages reçus par le client");
 		
 		applicationClient.getjFrameClient().getjTextAreaObjetsRecus().setCaretPosition(applicationClient.getjFrameClient().getjTextAreaObjetsRecus().getText().length());
+		
+		
 
 	}
 

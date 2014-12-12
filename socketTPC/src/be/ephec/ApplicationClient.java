@@ -11,6 +11,11 @@ public class ApplicationClient {
 		jFrameClient = new JFrameClient(this);
 		jFrameClient.setVisible(true);
 	}
+	
+	public void alerteNouveauMessage(Object o){
+		String s = (String) o;
+		jFrameClient.getjTextAreaObjetsRecus().setText("On a reçu "+s+" du serveur");
+	}
 
 	public MonClientTCP getClient() {
 		return client;

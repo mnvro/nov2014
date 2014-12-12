@@ -23,16 +23,9 @@ import java.util.ArrayList;
 
 public class JPanelServeur extends JPanel {
 	private JTextField txtMessageEnvoyer;
-	//private JTextArea txtrMessagesReus;
-	//private JComboBox comboBox;
-	
-	
-
 	
 	private ApplicationServeur applicationServeur;
 	
-	
-
 	public JPanelServeur(ApplicationServeur applicationServeur) {
 		this.applicationServeur = applicationServeur;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -65,8 +58,8 @@ public class JPanelServeur extends JPanel {
 		JButton JButtonEnvoyer = new JButton("Envoyer");
 		JButtonEnvoyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex() = "+applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex());
-				System.out.println("on écrit sur le client = "+applicationServeur.getjFrameServeur().getListeNumClient().get(applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex()));
+				//System.out.println("applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex() = "+applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex());
+				//System.out.println("on écrit sur le client = "+applicationServeur.getjFrameServeur().getListeNumClient().get(applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex()));
 				applicationServeur.getServeur().ecrire(applicationServeur.getjFrameServeur().getListeNumClient().get(applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex()), txtMessageEnvoyer.getText());
 			}
 		});
@@ -85,12 +78,12 @@ public class JPanelServeur extends JPanel {
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
-		applicationServeur.getjFrameServeur().setTxtrMessagesReus(new JTextArea());
-		scrollPane.setViewportView(applicationServeur.getjFrameServeur().getTxtrMessagesReus());
-		applicationServeur.getjFrameServeur().getTxtrMessagesReus().setEditable(false);
+		applicationServeur.getjFrameServeur().setjTextAreaObjetsRecus(new JTextArea());
+		scrollPane.setViewportView(applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus());
+		applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().setEditable(false);
 		//textPaneObjetRecu.setText("blablabla\nblablabla\n");
-		applicationServeur.getjFrameServeur().getTxtrMessagesReus().setCaretPosition(applicationServeur.getjFrameServeur().getTxtrMessagesReus().getText().length());
-		applicationServeur.getjFrameServeur().getTxtrMessagesReus().setText("Messages re\u00E7us :");
+		applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().setCaretPosition(applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().getText().length());
+		applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().setText("Messages reçus et console du serveur :");
 		
 
 	}

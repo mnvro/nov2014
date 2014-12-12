@@ -56,7 +56,7 @@ public class MonClientTCP extends Socket implements Runnable {
 		while (this.isConnected()){
 			try {
 				objetRecu = ois.readObject();
-				System.out.println("J'ai reçu un objet et je l'ajouter au JTextArea");
+				//System.out.println("J'ai reçu un objet et je l'ajouter au JTextArea");
 				applicationClient.getjFrameClient().getjTextAreaObjetsRecus().append("\n"+objetRecu.toString());
 				applicationClient.getjFrameClient().getjTextAreaObjetsRecus().setCaretPosition(applicationClient.getjFrameClient().getjTextAreaObjetsRecus().getText().length());
 			} catch (ClassNotFoundException | IOException e) {

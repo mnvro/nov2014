@@ -18,7 +18,7 @@ public class JFrameServeur extends JFrame {
 	private JPanel contentPane;
 	private ApplicationServeur applicationServeur;
 	private JComboBox comboBox;
-	private JTextArea txtrMessagesReus;
+	private JTextArea jTextAreaObjetsRecus;
 	private int largeur = Param.LARGEURJFSERVEUR;
 	private int hauteur = Param.HAUTEURJFSERVEUR;
 
@@ -32,12 +32,14 @@ public class JFrameServeur extends JFrame {
 		this.listeNumClient = listeNumClient;
 	}
 
-	public JTextArea getTxtrMessagesReus() {
-		return txtrMessagesReus;
+	
+
+	public JTextArea getjTextAreaObjetsRecus() {
+		return jTextAreaObjetsRecus;
 	}
 
-	public void setTxtrMessagesReus(JTextArea txtrMessagesReus) {
-		this.txtrMessagesReus = txtrMessagesReus;
+	public void setjTextAreaObjetsRecus(JTextArea jTextAreaObjetsRecus) {
+		this.jTextAreaObjetsRecus = jTextAreaObjetsRecus;
 	}
 
 	public JComboBox getComboBox() {

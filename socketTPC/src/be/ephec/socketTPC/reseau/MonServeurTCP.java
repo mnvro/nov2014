@@ -63,8 +63,8 @@ public class MonServeurTCP extends ServerSocket implements Runnable {
 				try {
 					objetRecu = ois.readObject();
 					System.out.println("J'ai reçu un objet");
-					applicationServeur.getjFrameServeur().getTxtrMessagesReus().append("\n"+objetRecu.toString());
-					applicationServeur.getjFrameServeur().getTxtrMessagesReus().setCaretPosition(applicationServeur.getjFrameServeur().getTxtrMessagesReus().getText().length());
+					applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().append("\n"+objetRecu.toString());
+					applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().setCaretPosition(applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().getText().length());
 
 				} catch (ClassNotFoundException | IOException e) {
 					// TODO Auto-generated catch block
@@ -164,7 +164,8 @@ public class MonServeurTCP extends ServerSocket implements Runnable {
 		try {
 			while( !this.isClosed()){  
 				this.listeClients.add(new SocketCoteServeur(this.accept(),applicationServeur,this.listeClients.size()-1 ));
-				System.out.println("un nouveau client est connecté");
+				//System.out.println("un nouveau client est connecté");
+				applicationServeur.getjFrameServeur().getjTextAreaObjetsRecus().append("\nNouveau client");
 				String s = "Envoyer uniquement au client "+(this.listeClients.size()-1+"");
 				applicationServeur.getjFrameServeur().getComboBox().addItem(new ElementJcomboBox(s,this.listeClients.size()-1,this.listeClients.size()-1));
 				applicationServeur.getjFrameServeur().getListeNumClient().add(this.listeClients.size()-1);
