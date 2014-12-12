@@ -38,14 +38,6 @@ public class JPanelAccueilServeur extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblPourInfoVoici = new JLabel("Pour info, voici toutes les ip de votre serveur");
-		GridBagConstraints gbc_lblPourInfoVoici = new GridBagConstraints();
-		gbc_lblPourInfoVoici.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPourInfoVoici.anchor = GridBagConstraints.EAST;
-		gbc_lblPourInfoVoici.gridx = 0;
-		gbc_lblPourInfoVoici.gridy = 1;
-		add(lblPourInfoVoici, gbc_lblPourInfoVoici);
-		
 		JComboBox comboBox = new JComboBox();
 		
 		InetAddress ia[] = MonServeurTCP.trouveToutesLesIpsDuServeur(); 
@@ -54,6 +46,14 @@ public class JPanelAccueilServeur extends JPanel {
 			tabS[i]=ia[i].getHostAddress();
 			comboBox.addItem(tabS[i]);
 		}
+		
+		JLabel lblPourInfoVoici = new JLabel("Pour info, voici toutes les ip de votre serveur");
+		GridBagConstraints gbc_lblPourInfoVoici = new GridBagConstraints();
+		gbc_lblPourInfoVoici.gridwidth = 2;
+		gbc_lblPourInfoVoici.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPourInfoVoici.gridx = 0;
+		gbc_lblPourInfoVoici.gridy = 0;
+		add(lblPourInfoVoici, gbc_lblPourInfoVoici);
 		
 		
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -91,6 +91,8 @@ public class JPanelAccueilServeur extends JPanel {
 					applicationServeur.setServeur(new MonServeurTCP(applicationServeur));
 					applicationServeur.getjFrameServeur().setContentPane(new JPanelServeur(applicationServeur));
 					applicationServeur.getjFrameServeur().setVisible(true);
+					applicationServeur.getjFrameServeur().setTitle("Serveur "+tabS[comboBox.getSelectedIndex()]+":"+textField.getText());
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

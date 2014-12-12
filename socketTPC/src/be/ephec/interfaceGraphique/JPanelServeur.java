@@ -65,8 +65,6 @@ public class JPanelServeur extends JPanel {
 		JButton JButtonEnvoyer = new JButton("Envoyer");
 		JButtonEnvoyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//ArrayList<>applicationServeur.getServeur().getListeClients()
-				//applicationServeur.getServeur().ecrire(-1, txtMessageEnvoyer.getText());
 				System.out.println("applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex() = "+applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex());
 				System.out.println("on écrit sur le client = "+applicationServeur.getjFrameServeur().getListeNumClient().get(applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex()));
 				applicationServeur.getServeur().ecrire(applicationServeur.getjFrameServeur().getListeNumClient().get(applicationServeur.getjFrameServeur().getComboBox().getSelectedIndex()), txtMessageEnvoyer.getText());

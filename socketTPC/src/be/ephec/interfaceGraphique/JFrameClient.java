@@ -9,26 +9,16 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import be.ephec.ApplicationClient;
+import be.ephec.Param;
 import be.ephec.socketTPC.reseau.MonClientTCP;
 
 public class JFrameClient extends JFrame {
-
+    private static int nbJFrame = 0;
 	private JPanel contentPane;
 	private ApplicationClient applicationClient;
 	private  JTextArea jTextAreaObjetsRecus;
-
-	private static int nbClient;
-
-
-
-	public static int getNbClient() {
-		return nbClient;
-	}
-
-	public static void setNbClient(int nbClient) {
-		JFrameClient.nbClient = nbClient;
-	}
-
+	private int largeur = Param.LARGEURJFCLIENT;
+	private int hauteur = Param.HAUTEURJFCLIENT;
 
 	public JTextArea getjTextAreaObjetsRecus() {
 		return jTextAreaObjetsRecus;
@@ -47,13 +37,12 @@ public class JFrameClient extends JFrame {
 	 */
 	public JFrameClient(ApplicationClient applicationClient) {
 		this.applicationClient = applicationClient;
-		this.setTitle("Client numéro "+nbClient);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300+ nbClient/3*300,nbClient%3*300 , 300, 300); // colonne puis ligne
+		setBounds(Param.LARGEURJFSERVEUR+ nbJFrame/3*largeur,nbJFrame%3*hauteur , largeur, hauteur); // colonne puis ligne
 		contentPane = new JPanelAccueilClient(applicationClient);
 		setContentPane(contentPane);
-		nbClient++;
+		nbJFrame++;
 	}
 
 }

@@ -14,7 +14,16 @@ public class MonClientTCP extends Socket implements Runnable {
 	private ObjectInputStream ois;
 	private Object objetRecu;
 	private ApplicationClient applicationClient;
+	private static int nbClient;
 	
+
+	public static int getNbClient() {
+		return nbClient;
+	}
+
+	public static void setNbClient(int nbClient) {
+		MonClientTCP.nbClient = nbClient;
+	}
 
 	public void ecrireMessage(Object o){
 		try {
@@ -32,6 +41,8 @@ public class MonClientTCP extends Socket implements Runnable {
 			oos = new ObjectOutputStream(this.getOutputStream());	// il faut croiser par rapport au serveur
 			ois = new ObjectInputStream(this.getInputStream());
 			(new Thread(this)).start();
+			nbClient++;
+			applicationClient.getjFrameClient().setTitle("Client numéro :"+(nbClient-1));
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

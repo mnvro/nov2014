@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import be.ephec.ApplicationServeur;
+import be.ephec.Param;
 
 public class JFrameServeur extends JFrame {
 
@@ -18,6 +19,8 @@ public class JFrameServeur extends JFrame {
 	private ApplicationServeur applicationServeur;
 	private JComboBox comboBox;
 	private JTextArea txtrMessagesReus;
+	private int largeur = Param.LARGEURJFSERVEUR;
+	private int hauteur = Param.HAUTEURJFSERVEUR;
 
 	private ArrayList<Integer> listeNumClient = new ArrayList<Integer>();
 
@@ -49,7 +52,7 @@ public class JFrameServeur extends JFrame {
 		this.applicationServeur = applicationServeur;
 		listeNumClient.add(-1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 300, 300);
+		setBounds(0, 0, largeur, hauteur);
 		this.setVisible(true);
 		this.setTitle("Serveur");
 		contentPane = new JPanelAccueilServeur(applicationServeur);	
